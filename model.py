@@ -1,4 +1,3 @@
-# EECS 545 Fall 2020
 import math
 import torch.nn as nn
 import torch.nn.functional as F
@@ -53,15 +52,10 @@ class CNN(nn.Module):
         return z
 
 
-def count_parameters(model):
-    return sum(p.numel() for p in model.parameters() if p.requires_grad)
-
-
 if __name__ == '__main__':
     from dataset import DogDataset
     net = CNN()
     print(net)
-    print('Number of CNN parameters: {}'.format(count_parameters(net)))
     dataset = DogDataset()
     images, labels = iter(dataset.train_loader).next()
     print('Size of model output:', net(images).size())
